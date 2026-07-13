@@ -6,7 +6,7 @@ const result = execFileSync('npm', ['pack', '--dry-run', '--json', '--cache', '/
 const [packageReport] = JSON.parse(result);
 const unexpectedFiles = packageReport.files
   .map((file) => file.path)
-  .filter((path) => path !== 'package.json' && path !== 'README.md' && !path.startsWith('dist/'));
+  .filter((path) => path !== 'package.json' && path !== 'README.md' && path !== 'LICENSE' && !path.startsWith('dist/'));
 
 if (unexpectedFiles.length > 0) {
   throw new Error(`Package contains unexpected files: ${unexpectedFiles.join(', ')}`);
