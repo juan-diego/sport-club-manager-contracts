@@ -1,0 +1,61 @@
+{
+  "name": "@sport-club-manager/contracts",
+  "version": "0.1.0-dev.20260712141422929",
+  "description": "Shared contracts and domain models for the Sport Club Manager application.",
+  "type": "module",
+  "sideEffects": false,
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./models": {
+      "types": "./dist/models/index.d.ts",
+      "import": "./dist/models/index.js"
+    },
+    "./providers": {
+      "types": "./dist/providers/index.d.ts",
+      "import": "./dist/providers/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "check:source-dependencies": "node scripts/check-source-dependencies.mjs",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "lint": "eslint src test",
+    "test": "vitest run",
+    "spell": "cspell --no-progress --no-summary src README.md docs .agent",
+    "markdown": "markdownlint-cli2 '**/*.md' '#node_modules' '#dist' '#etc' '#temp'",
+    "api:check": "npm run build && api-extractor run",
+    "package:check": "npm run build && node scripts/verify-package.mjs",
+    "package:smoke": "npm run build && node scripts/smoke-package.mjs",
+    "security:tools": "sh -c 'command -v gitleaks >/dev/null && command -v osv-scanner >/dev/null && command -v semgrep >/dev/null'",
+    "security:secrets:history": "gitleaks git --redact --log-opts='--all'",
+    "security:secrets:working-tree": "gitleaks dir . --redact --no-git --exclude-path=node_modules --exclude-path=dist",
+    "security:audit": "npm audit --audit-level=high",
+    "security:osv": "osv-scanner scan source -r .",
+    "security:semgrep": "semgrep scan --config p/typescript --config p/secrets --error --metrics=off src",
+    "security": "npm run security:tools && npm run security:secrets:history && npm run security:secrets:working-tree && npm run security:audit && npm run security:osv && npm run security:semgrep",
+    "quality": "npm run typecheck && npm run check:source-dependencies && npm run lint && npm run test && npm run spell && npm run markdown && npm run api:check && npm run package:check && npm run package:smoke && npm run security",
+    "prepublishOnly": "npm run build",
+    "clean": "rm -rf dist"
+  },
+  "peerDependencies": {
+    "rxjs": "~7.8.0"
+  },
+  "devDependencies": {
+    "@microsoft/api-extractor": "7.58.9",
+    "cspell": "9.2.1",
+    "eslint": "9.35.0",
+    "markdownlint-cli2": "0.18.1",
+    "rxjs": "~7.8.0",
+    "typescript": "~5.9.2",
+    "typescript-eslint": "8.44.1",
+    "vitest": "3.2.4"
+  }
+}
