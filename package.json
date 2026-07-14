@@ -1,6 +1,6 @@
 {
   "name": "@sport-club-manager/contracts",
-  "version": "0.1.0-dev.20260712141422929",
+  "version": "0.1.0-dev.20260714070040877",
   "description": "Shared contracts and domain models for the Sport Club Manager application.",
   "type": "module",
   "sideEffects": false,
