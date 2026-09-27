@@ -36,7 +36,8 @@ Run this checklist for any meaningful change in the repository.
 
 6. Did exported declaration documentation change?
    - TSDoc purpose, sensitive-data handling, date/time formats, or provider behavior
-   - If yes, run the API report and spelling/Markdown checks, then review the affected current docs.
+   - If yes, run the API report and spelling check, then manually review Markdown structure,
+     formatting, and the affected current docs.
 
 ## Completion Rule
 

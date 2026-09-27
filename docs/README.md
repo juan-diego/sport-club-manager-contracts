@@ -21,5 +21,5 @@ This repository holds the current source-of-truth documentation for the shared c
   update `README.md` and `docs/reference/package-architecture.md` in the same change set.
 - If scripts, validation tooling, or release-gate requirements change, update `README.md` and this
   index in the same change set.
-- Every exported declaration must have accurate TSDoc. Run `npm run api:check`, `npm run spell`,
-  and `npm run markdown` when reviewing documentation changes.
+- Every exported declaration must have accurate TSDoc. Run `npm run api:check` and `npm run spell`,
+  then manually review Markdown structure, formatting, and synchronization with the code.

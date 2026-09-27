@@ -60,8 +60,9 @@ secrets, critical or high dependency vulnerabilities, failed checks, and public-
 documentation mismatches. Medium security findings require a documented risk disposition and owner.
 
 `npm run quality` runs type checking, the source-dependency allowlist check, linting, regression tests,
-spelling and Markdown checks, the generated public-API report, package-content verification, and
-security checks. The security checks require these locally installed command-line tools:
+spelling checks, the generated public-API report, package-content verification, and security checks.
+Markdown structure and formatting are reviewed with the associated documentation change. The security
+checks require these locally installed command-line tools:
 
 - `gitleaks` for working-tree and full Git-history secret scanning
 - `osv-scanner` for lockfile vulnerability scanning
