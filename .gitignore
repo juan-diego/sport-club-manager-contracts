@@ -7,3 +7,7 @@ temp
 .env
 .env.*
 !.env.example
+
+#IntelliJ
+.idea/
+.junie/
