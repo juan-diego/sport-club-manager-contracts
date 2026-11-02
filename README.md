@@ -55,26 +55,17 @@ npm run quality
 
 ## Quality Gate
 
-Run `npm ci` and `npm run quality` from a clean working tree. The quality gate reports confirmed
-secrets, critical or high dependency vulnerabilities, failed checks, and public-API or
-documentation mismatches. Medium security findings require a documented risk disposition and owner.
+Run `npm ci` and `npm run quality` from a clean working tree. The quality gate reports critical or
+high dependency vulnerabilities, failed checks, and public-API or documentation mismatches. Medium security findings require a documented risk disposition and owner.
 
 `npm run quality` runs type checking, the source-dependency allowlist check, linting, regression tests,
-spelling checks, the generated public-API report, package-content verification, and security checks.
-Markdown structure and formatting are reviewed with the associated documentation change. The security
-checks require these locally installed command-line tools:
+spelling checks, the generated public-API report, package-content verification, and
+`npm audit --audit-level=high`. Markdown structure and formatting are reviewed with the associated
+documentation change.
 
-- `gitleaks` for working-tree and full Git-history secret scanning
-- `osv-scanner` for lockfile vulnerability scanning
-- `semgrep` for local TypeScript and secret-focused static analysis
-
-Install the tools from their official releases or package managers, then confirm their commands
-are on `PATH`. The scanners run locally; OSV and npm audit query vulnerability metadata but do not
-upload source code.
-
-Review `npm pack --dry-run` output, tracked files, package metadata, `.gitignore`, generated
-package contents, and every scanner finding. A confirmed secret requires revocation and removal
-from Git history; adding the file to `.gitignore` is insufficient.
+Review `npm pack --dry-run` output, tracked files, package metadata, `.gitignore`, and generated
+package contents for credentials and unintended files. A confirmed secret requires revocation and
+removal from Git history; adding the file to `.gitignore` is insufficient.
 
 ## Compatibility Rules
 
